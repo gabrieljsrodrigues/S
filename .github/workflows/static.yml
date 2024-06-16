@@ -1,43 +1,94 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
-
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desculpa</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .message {
+            font-size: 2em;
+            color: #fff;
+            text-align: center;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff00ff;
+            }
+        }
+        .floatingImage {
+            position: absolute;
+            width: 150px;
+            height: auto;
+        }
+        #image1 {
+            top: 0;
+            left: 0;
+            animation: float1 60s linear infinite;
+        }
+        #image2 {
+            top: 0;
+            right: 0;
+            animation: float2 60s linear infinite;
+        }
+        #image3 {
+            bottom: 0;
+            left: 0;
+            animation: float3 60s linear infinite;
+        }
+        #image4 {
+            bottom: 0;
+            right: 0;
+            animation: float4 60s linear infinite;
+        }
+        @keyframes float1 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(80vw, 10vh); }
+            50% { transform: translate(80vw, 80vh); }
+            75% { transform: translate(10vw, 80vh); }
+            100% { transform: translate(0, 0); }
+        }
+        @keyframes float2 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-80vw, 10vh); }
+            50% { transform: translate(-80vw, 80vh); }
+            75% { transform: translate(-10vw, 80vh); }
+            100% { transform: translate(0, 0); }
+        }
+        @keyframes float3 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(80vw, -10vh); }
+            50% { transform: translate(80vw, -80vh); }
+            75% { transform: translate(10vw, -80vh); }
+            100% { transform: translate(0, 0); }
+        }
+        @keyframes float4 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-80vw, -10vh); }
+            50% { transform: translate(-80vw, -80vh); }
+            75% { transform: translate(-10vw, -80vh); }
+            100% { transform: translate(0, 0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="message">ME DESCULPA POR TER FICADO BEBADO</div>
+    <img id="image1" class="floatingImage" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTMz3FYxEMIrgDf5XwTrxSaIGHTJ8t23t0FCXY8Njt3N09EvbL4" alt="Flutuando">
+    <img id="image2" class="floatingImage" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTMz3FYxEMIrgDf5XwTrxSaIGHTJ8t23t0FCXY8Njt3N09EvbL4" alt="Flutuando">
+    <img id="image3" class="floatingImage" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTMz3FYxEMIrgDf5XwTrxSaIGHTJ8t23t0FCXY8Njt3N09EvbL4" alt="Flutuando">
+    <img id="image4" class="floatingImage" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTMz3FYxEMIrgDf5XwTrxSaIGHTJ8t23t0FCXY8Njt3N09EvbL4" alt="Flutuando">
+</body>
+</html>
